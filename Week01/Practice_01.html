@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>스파르타코딩클럽 | 로그인페이지</title>
+    <link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&display=swap" rel="stylesheet">
+    <style>
+        /* class를 만들어 가리킬 때 */
+        .red-font {
+            color: red;
+        }
+        .green-font {
+            color: green;
+        }
+        .font-size {
+            font-size : 40px;
+        }
+        .btn_padding{
+            padding-bottom: 10px;
+            padding-left: 10px;
+            padding-right:10px;
+            padding-top :10px;
+        }
+        /* CSS */
+        * {
+            color: green;
+               margin: 0;
+               text-decoration: none;
+        }
+        .class1 {
+  background: yellowgreen;
+  color: darkgreen;
+}
+
+/* div 태그 중 class2 클래스를 가진 태그만 지칭 */
+/* 케이스3에만 적용됩니다. 케이스2는 p 태그이므로, 적용되지 않습니다.*/
+div.class2 {
+  background: darkgreen;
+  color: yellowgreen;
+}
+
+.class3 > h1 {
+	color: red;
+}
+    </style>
+</head>
+
+<body>
+    <h1 class="red-font font-size">로그인 페이지</h1>
+    <div class="red-font">
+        <p class="green-font">
+            ID: <input type="text" />
+        </p>
+        <p>
+            PW: <input type="password" />
+        </p>
+    </div>
+    <button>로그인하기</button>
+<p class="class1">케이스1</p>
+<p class="class2">케이스2</p>
+<div class="class2">케이스3</div>
+<div class="class3"><h1>케이스4</h1></div>
+</body>
+
+</html>

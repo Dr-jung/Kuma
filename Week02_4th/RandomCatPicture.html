@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>고양이 랜</title>
+
+       <!-- jQuery를 import 합니다 -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <script>
+        function updateInfo(){
+            $("#catPicture").empty();
+            let newPicture;
+            $.ajax(
+                {
+                    url : "https://api.thecatapi.com/v1/images/search",
+                    type : "GET",
+                    data : {},
+                    success : function(response){
+                        let catUrl = response[0]["url"];
+                        alert(catUrl);
+                        newPicture = '<img src="'+catUrl+'"'+'/>';
+                        $("#catPicture").append(newPicture);
+                    }
+
+                }
+            )
+        }
+
+    </script>
+
+</head>
+<body>
+<div>
+    <span>고양이 사진 랜덤 업데이트</span> <button onclick="updateInfo()">업데이트</button>
+    <ul id="catPicture">
+        <img src="https://cdn2.thecatapi.com/images/egf.jpg"/>
+        <li>초기값</li>
+    </ul>
+</div>
+
+</body>
+</html>
