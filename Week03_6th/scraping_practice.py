@@ -30,18 +30,18 @@ for movie in movies:
         rank = movie.select_one('td:nth-child(1) > img')['alt']  # img 태그의 alt 속성값을 가져오기
         title = a_tag.text  # a 태그 사이의 텍스트를 가져오기
         star = movie.select_one('td.point').text  # td 태그 사이의 텍스트를 가져오기
-        print(rank, title, star)
+        # print(rank, title, star)
         movie_infos.append({'rank' : rank, 'title' : title, 'star' : star})
-        print(movie_infos)
+        # print(movie_infos)
         # db.users.insert_one({'rank' : rank, 'title' : title, 'star' : star})
 
 db.users.insert_many(movie_infos)
-info = list(db.users.find({},{'_id' : False}))
+info = db.users.find({},{'_id' : False})
 print(info)
 
-target_movie = []
-target_movie = list(db.users.find_one({'title': '월-E'}, {'_id' : False}))
-target_star = str(target_movie[0]['star])
+# target_movie = []
+# target_movie = list(db.users.find_one({'title': '월-E'}, {'_id' : False}))
+# target_star = str(target_movie[0]['star'])
 
 # for movie in movies:
 #     if movie['star'] == target_star:
