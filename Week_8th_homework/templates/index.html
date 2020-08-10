@@ -56,6 +56,18 @@
                 }
 
                 // 주문하기 API를 사용해 여기를 채워주세요
+                $.ajax({
+                    type : "POST",
+                    url : "/order",
+                    data : {'name_give':name, 'count_give':count,'address_give':address,'phone_give':phone },
+                    success: function (response){
+                            if (response["result"] == "success") {
+                            alert(response["msg"]);
+                            window.location.reload();
+                            }
+                    }
+
+                })
             }
 
             $(document).ready(function () {
@@ -65,8 +77,33 @@
 
             function showOrders() {
                 // 주문 목록보기 API 를 사용해 여기를 채워주세요
+                   $.ajax({
+                    type: "GET",
+                    url: "/order",
+                    data: {},
+                    success: function (response) {
+                        if (response["result"] == "success") {
+                            let order_list = response["orders"];
+                            for(index=0;index<order_list.length;index++){
+                                let name = order_list[index]['name'];
+                                let count = order_list[index]['count'];
+                                let address = order_list[index]['address'];
+                                let phone = order_list[index]['phone'];
+                                result =
+                                    `<tr>
+                                            <td>${name}</td>
+                                            <td>${count}</td>
+                                            <td>${address}</td>
+                                            <td>${phone}</td>
+                                    </tr>`
+                                $("#orders-box").append(result);
+                            }
+                            alert(result);
+                        }
+                    }
+                })
             }
-
+/*
             function makeOrderRow(name, count, address, phone) {
                 let tempHtml = `<tr>\
                                 <td>${name}</td>
@@ -77,6 +114,8 @@
 
                 $("#orders-box").append(tempHtml);
             }
+
+ */
         </script>
 
         <style type="text/css">
